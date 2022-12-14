@@ -1,17 +1,16 @@
 # Deploying a Flask API
 
-This is the project starter repo for the course Server Deployment, Containerization, and Testing.
+## Server Deployment, Containerization, and Testing.
 
-In this project you will containerize and deploy a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
+Containerize and deploy a Flask API to a Kubernetes cluster using Docker, AWS EKS, CodePipeline, and CodeBuild.
 
-The Flask app that will be used for this project consists of a simple API with three endpoints:
+The Flask app used for this project consists of a simple API with three endpoints:
 
 - `GET '/'`: This is a simple health check, which returns the response 'Healthy'. 
 - `POST '/auth'`: This takes a email and password as json arguments and returns a JWT based on a custom secret.
 - `GET '/contents'`: This requires a valid JWT, and returns the un-encrpyted contents of that token. 
 
-The app relies on a secret set as the environment variable `JWT_SECRET` to produce a JWT. The built-in Flask server is adequate for local development, but not production, so you will be using the production-ready [Gunicorn](https://gunicorn.org/) server when deploying the app.
-
+The app relies on a secret set as the environment variable `JWT_SECRET` to produce a JWT. 
 
 
 ## Prerequisites
@@ -47,33 +46,7 @@ python -m pip install --upgrade pip==20.2.3
   Ensure to create all your resources in a single region. 
   * EKSCTL installed in your system. Follow the instructions [available here](https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html#installing-eksctl) or <a href="https://eksctl.io/introduction/#installation" target="_blank">here</a> to download and install `eksctl` utility. 
   * The KUBECTL installed in your system. Installation instructions for kubectl can be found <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">here</a>. 
-
-
-## Initial setup
-
-1. Fork the <a href="https://github.com/udacity/cd0157-Server-Deployment-and-Containerization" target="_blank">Server and Deployment Containerization Github repo</a> to your Github account.
-1. Locally clone your forked version to begin working on the project.
-```bash
-git clone https://github.com/SudKul/cd0157-Server-Deployment-and-Containerization.git
-cd cd0157-Server-Deployment-and-Containerization/
-```
-1. These are the files relevant for the current project:
-```bash
-.
-├── Dockerfile 
-├── README.md
-├── aws-auth-patch.yml #ToDo
-├── buildspec.yml      #ToDo
-├── ci-cd-codepipeline.cfn.yml #ToDo
-├── iam-role-policy.json  #ToDo
-├── main.py
-├── requirements.txt
-├── simple_jwt_api.yml
-├── test_main.py  #ToDo
-└── trust.json     #ToDo 
-```
-
-     
+   
 ## Project Steps
 
 Completing the project involves several steps:
@@ -85,4 +58,3 @@ Completing the project involves several steps:
 5. Create a CodePipeline pipeline triggered by GitHub checkins
 6. Create a CodeBuild stage which will build, test, and deploy your code
 
-For more detail about each of these steps, see the project lesson.
